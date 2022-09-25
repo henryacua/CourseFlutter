@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:helloworld/header_appbar.dart';
 import 'description_place.dart';
-import 'review.dart';
-import 'app_bar.dart';
+import 'review_list.dart';
+import 'header_appbar.dart';
 
 
 void main() {
@@ -9,15 +10,9 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  String descriptionPlace = 'Luce audaz e innovador con los estilos icónicos de Calvin Klein. Descubre nuestras nuevas colecciones. Envíos a todo el país. Compra en calvinklein.co. Calvin Klein Colombia. \n \nEstilos: Manga larga y corta, Con cremallera y hoddies, Skinny, mid y low rise.';
-
-  String pathImage = 'asset/img/Hippie.jpeg';
-  String name = "Daniel Hilarion";
-  String details = "1 review 1 photo";
-  String comment = "Me gusta ir al gym";
-
   MyApp({Key? key}) : super(key: key);
 
+  String descriptionPlace = 'Luce audaz e innovador con los estilos icónicos de Calvin Klein. Descubre nuestras nuevas colecciones. Envíos a todo el país. Compra en calvinklein.co. Calvin Klein Colombia. \n \nLos Loquitos toma tinto, ¡Proximo en cines!';
 
   // This widget is the root of your application.
   @override
@@ -38,11 +33,15 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          appBar: const myAppBar(),
-        body: Column(
+        body: Stack (
             children: [
-              DescriptionPlace('Calvin Klein', 5, descriptionPlace),
-              Review(pathImage, details, name, comment),
+              ListView(
+                  children:[
+                    DescriptionPlace('Calvin Klein', 5, descriptionPlace),
+                    ReviewList()
+                  ]
+              ),
+              HeaderAppBar()
             ]
         )
       )
